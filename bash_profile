@@ -19,3 +19,6 @@ if [ -f '/Users/mc/Downloads/google-cloud-sdk/path.bash.inc' ]; then source '/Us
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/mc/Downloads/google-cloud-sdk/completion.bash.inc' ]; then source '/Users/mc/Downloads/google-cloud-sdk/completion.bash.inc'; fi
+
+# Use git auto-complete
+if [ -f ~/git-completion.bash ]; then source ~/git-completion.bash; fi
