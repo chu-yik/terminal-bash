@@ -1,0 +1,32 @@
+[user]
+	name = Michael Chu
+	email = mathegan@gmail.com
+[commit]
+	template = /Users/mc/.stCommitMsg
+[color]
+	ui = auto
+[core]
+	excludesfile = /Users/mc/.gitignore_global
+	pager = less -FMRiX
+	autocrlf = input
+	editor = code --wait
+[diff]
+	toll = vscode
+[difftool "vscode"]
+	cmd = code --wait $MERGED
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[merge]
+	tool = vscode
+[mergetool "vscode"]
+	cmd = code --wait --diff $LOCAL $REMOTE
+[mergetool "sourcetree"]
+	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
+[alias]
+	co = checkout
+	st = status
+	br = branch
+	dag = log --graph --format='format:%C(yellow)%h%C(reset) %C(blue)\"%an\" <%ae>%C(reset) %C(magenta)%cr%C(reset)%C(auto)%d%C(reset)%n%s' --date-order
+	lg = log --color --graph --pretty=format:'%C(cyan)%h%C(reset) -%C(auto)%d%C(reset) %s %C(green)(%cr) %C(blue)<%an>%C(reset)' --abbrev-commit
