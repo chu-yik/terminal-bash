@@ -1,0 +1,120 @@
+source /apollo/env/envImprovement/var/zshrc
+
+export BRAZIL_WORKSPACE_DEFAULT_LAYOUT=short
+
+for f in SDETools envImprovement AmazonAwsCli OdinTools; do
+    if [[ -d /apollo/env/$f ]]; then
+        export PATH=$PATH:/apollo/env/$f/bin
+    fi
+done
+
+export AUTO_TITLE_SCREENS="NO"
+
+#export PROMPT="
+#%{$fg[white]%}(%D %*) <%?> [%~] $program %{$fg[default]%}
+#%{$fg[cyan]%}%m %#%{$fg[default]%} "
+
+# for more see: http://www.nparikh.org/unix/prompt.php#zsh
+# %D: date in yy-mm-dd format - inside {} -> strftime
+    # %F: iOS 8601 date
+    # %a: abbr. day of week
+    # %T: time in 24h, with seconds
+# %*: time in 24h format, with seconds
+# %?: return code of last command
+# %~: $PWD with $HOME replaced by ~
+# %n: username
+# %m: hostname, up to first '.'
+# %#: '#' if privileged, '%' otherwise
+# %B(%b): start(stop) bold
+# %U(%u): start(stop) underline
+# %S(%s): start(stop) standout
+
+export PROMPT="
+%{$fg[white]%}>%D{%F<%a> @ %T} → %~ $program %{$fg[default]%}
+%{$fg[cyan]%}[%n @ %U%m%u] %#%{$fg[default]%} "
+
+export RPROMPT=
+
+set-title() {
+    echo -e "\e]0;$*\007"
+}
+
+ssh() {
+    set-title $*;
+    /usr/bin/ssh -2 $*;
+    set-title $HOST;
+}
+
+alias e=emacs
+alias bb=brazil-build
+
+alias bba='brazil-build apollo-pkg'
+alias bre='brazil-runtime-exec'
+alias brc='brazil-recursive-cmd'
+alias bws='brazil ws'
+alias bwsuse='bws use --gitMode -p'
+alias bwscreate='bws create -n'
+alias brc=brazil-recursive-cmd
+alias bbr='brc brazil-build'
+alias bball='brc --allPackages'
+alias bbb='brc --allPackages brazil-build'
+alias bbra='bbr apollo-pkg'
+
+# custom
+alias la='ls -A'
+alias lr='ls -hartl'
+alias mwinit='/usr/bin/mwinit -o'
+alias carpediem='/usr/kerberos/bin/kinit -f && /usr/bin/mwinit -o'
+alias brazil-octane='/apollo/env/OctaneBrazilTools/bin/brazil-octane'
+#alias third-party='/apollo/env/BrazilThirdPartyTool/bin/brazil-third-party-tool'
+#alias third-party-promote='/apollo/env/BrazilThirdPartyTool/bin/brazil-third-party-tool promote'
+alias aplc='/apollo/sbin/apolloLocalHostControl --print'
+alias apenv='lr /apollo/env'
+# register with AAA
+alias regAAA=/apollo/env/AAAWorkspaceSupport/bin/register_with_aaa.py
+# short for git lg
+alias gl='git lg'
+# short for source
+alias sourceme='source ~/.zshrc'
+# for XRDP
+alias x-status='sudo /etc/init.d/xrdp status'
+alias x-restart='sudo /etc/init.d/xrdp restart'
+# end custom
+
+# timber
+alias timber-na='sshenv TimberFS/IAD/OFCS'
+alias timber-eu='sshenv TimberFS/DUB/OFCS'
+alias timber-jp='sshenv TimberFS/PDX/OFCS'
+alias timber-cn='sshenv TimberFS/PEK/OFCS'
+# end timber
+
+if [ -f ~/.zshrc-dev-dsk-post ]; then
+    source ~/.zshrc-dev-dsk-post
+fi
+
+if [ -f ~/bin/disable-ip-forward ]; then
+    ~/bin/disable-ip-forward
+fi
+
+# terminal art
+cat "$HOME/bin/havefun"
+# end
+
+export JAVA_HOME=/apollo/env/envImprovement/jdk1.8
+export PATH="$HOME/eclipse/active:$PATH"
+export PATH=$HOME/.toolbox/bin:$PATH
+
+# rbenv
+export PATH=$HOME/.rbenv/bin:$PATH
+if command -v rbenv 1>/dev/null 2>&1; then
+    eval "$(rbenv init -)"
+fi
+
+# pyenv
+export PATH=$HOME/.pyenv/bin:$PATH
+if command -v pyenv 1>/dev/null 2>&1; then
+    eval "$(pyenv init -)"
+fi
+
+fpath=(~/.zsh/completion $fpath)
+autoload -Uz compinit && compinit -i
