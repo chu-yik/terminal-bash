@@ -1,3 +1,5 @@
+# depreated since 2019-12
+
 export CLICOLOR=1
 export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx
 export PATH=/Library/Android/sdk/platform-tools:"${PATH}"
