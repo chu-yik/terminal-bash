@@ -118,3 +118,9 @@ fi
 
 fpath=(~/.zsh/completion $fpath)
 autoload -Uz compinit && compinit -i
+
+# rubyenv - not rbenv
+export PATH=$PATH:/apollo/env/RubyEnv/bin
+
+# Z
+. ~/bin/z.sh
