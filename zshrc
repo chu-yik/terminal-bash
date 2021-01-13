@@ -29,6 +29,7 @@ alias lr='ls -hartl'
 alias grep='grep --color=auto'
 alias gl='git lg'
 alias diffc='code --wait --diff'
+alias cr-mainline='REMOTE_TARGET_BRANCH=mainline cr --parent origin/mainline'
 
 # Git auto-complete
 # see: https://medium.com/@oliverspryn/adding-git-completion-to-zsh-60f3b0e7ffbc
@@ -68,13 +69,20 @@ export PATH=$PATH:/Volumes/Unix/workplace/.odin-tools/env/OdinRetrievalScript-1.
 
 # Brazil
 alias bb=brazil-build
+alias bba='brazil-build apollo-pkg'
 alias bws='brazil ws'
+alias bre='brazil-runtime-exec'
+alias brc='brazil-recursive-cmd'
+alias bbb='brazil-recursive-cmd --allPackages brazil-build'
 
 # Midway
 alias mw='/usr/local/bin/mwinit -o'
 
 # Work Doc
 alias workdoc='cd /Users/chumich/Amazon\ WorkDocs\ Drive/My\ Documents/'
+
+# VPN
+alias vpn='/opt/cisco/anyconnect/bin/vpn'
 
 # Z
 . /Users/chumich/bin/z.sh

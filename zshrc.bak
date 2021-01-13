@@ -76,25 +76,33 @@ alias regAAA=/apollo/env/AAAWorkspaceSupport/bin/register_with_aaa.py
 alias gl='git lg'
 # short for source
 alias sourceme='source ~/.zshrc'
+# logsearch
+alias logsearch='/apollo/env/LogSearchServiceCli/bin/logsearch'
 # for XRDP
 alias x-status='sudo /etc/init.d/xrdp status'
 alias x-restart='sudo /etc/init.d/xrdp restart'
+alias x-stop='sudo /etc/init.d/xrdp stop'
 # end custom
 
 # timber
-alias timber-na='sshenv TimberFS/IAD/OFCS'
-alias timber-eu='sshenv TimberFS/DUB/OFCS'
-alias timber-jp='sshenv TimberFS/PDX/OFCS'
-alias timber-cn='sshenv TimberFS/PEK/OFCS'
+alias timber-na='sshenv TimberFS/IAD/COW'
+alias timber-eu='sshenv TimberFS/DUB/COW'
+alias timber-jp='sshenv TimberFS/PDX/COW'
+alias timber-cn='sshenv TimberFS/PEK/COW'
+alias timber-na-ofcs='sshenv TimberFS/IAD/OFCS'
+alias timber-eu-ofcs='sshenv TimberFS/DUB/OFCS'
+alias timber-jp-ofcs='sshenv TimberFS/PDX/OFCS'
+alias timber-cn-ofcs='sshenv TimberFS/PEK/OFCS'
 # end timber
 
 if [ -f ~/.zshrc-dev-dsk-post ]; then
     source ~/.zshrc-dev-dsk-post
 fi
 
-if [ -f ~/bin/disable-ip-forward ]; then
-    ~/bin/disable-ip-forward
-fi
+# Disable IP forward
+#if [ -f ~/bin/disable-ip-forward ]; then
+#    ~/bin/disable-ip-forward
+#fi
 
 # terminal art
 cat "$HOME/bin/havefun"
