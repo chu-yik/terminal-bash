@@ -169,7 +169,7 @@
 	AAAAAAAAAAAAAADP
 	</data>
 	<key>ProfileCurrentVersion</key>
-	<real>2.0499999999999998</real>
+	<real>2.0600000000000001</real>
 	<key>SelectionColor</key>
 	<data>
 	YnBsaXN0MDDUAQIDBAUGKyxYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3AS
@@ -246,6 +246,10 @@
 	DYMNig2TDZgNpQ2oDbUNug3CDcUN1w3aDd8AAAAAAAACAQAAAAAAAAAvAAAAAAAAAAAA
 	AAAAAAAN4Q==
 	</data>
+	<key>ShowDimensionsInTitle</key>
+	<true/>
+	<key>ShowRepresentedURLPathInTitle</key>
+	<false/>
 	<key>TextBoldColor</key>
 	<data>
 	YnBsaXN0MDDUAQIDBAUGKyxYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3AS
@@ -397,12 +401,14 @@
 	wg3FDcoAAAAAAAACAQAAAAAAAAAvAAAAAAAAAAAAAAAAAAANzA==
 	</data>
 	<key>columnCount</key>
-	<integer>120</integer>
+	<integer>128</integer>
 	<key>name</key>
 	<string>MC</string>
 	<key>rowCount</key>
-	<integer>40</integer>
+	<integer>48</integer>
 	<key>type</key>
 	<string>Window Settings</string>
+	<key>useOptionAsMetaKey</key>
+	<false/>
 </dict>
 </plist>
