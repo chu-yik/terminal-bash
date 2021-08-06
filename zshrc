@@ -1,3 +1,10 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 ########
 # PATH #
 ########
@@ -31,11 +38,22 @@ alias gl='git lg'
 alias diffc='code --wait --diff'
 alias cr-mainline='REMOTE_TARGET_BRANCH=mainline cr --parent origin/mainline'
 
-# Git auto-complete
+#####################
+# Git auto-complete #
+#####################
 # see: https://medium.com/@oliverspryn/adding-git-completion-to-zsh-60f3b0e7ffbc
 zstyle ':completion:*:*:git:*' script ~/.zsh/git-completion.bash
 fpath=(~/.zsh $fpath)
 autoload -Uz compinit && compinit
+
+#########
+# rbenv #
+#########
+
+# ruby-build installs a non-Homebrew OpenSSL for each Ruby version installed and these are never upgraded.
+# To link Rubies to Homebrew's OpenSSL 1.1 (which is upgraded) add the following to your ~/.zshrc:
+# Note: this may interfere with building old versions of Ruby (e.g <2.4) that use OpenSSL <1.1.
+export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
 
 # Load rbenv
 if command -v rbenv 1>/dev/null 2>&1; then
@@ -73,16 +91,35 @@ alias bba='brazil-build apollo-pkg'
 alias bws='brazil ws'
 alias bre='brazil-runtime-exec'
 alias brc='brazil-recursive-cmd'
+alias bbr='brazil-recursive-cmd brazil-build'
 alias bbb='brazil-recursive-cmd --allPackages brazil-build'
 
 # Midway
 alias mw='/usr/local/bin/mwinit -o'
+alias carpediem='kinit -f && mw'
 
 # Work Doc
 alias workdoc='cd /Users/chumich/Amazon\ WorkDocs\ Drive/My\ Documents/'
 
-# VPN
-alias vpn='/opt/cisco/anyconnect/bin/vpn'
+############
+# AMZN VPN #
+############
+alias vpn='~/bin/vpn-onetouch'
+alias vpns='/opt/cisco/anyconnect/bin/vpn status'
+alias vpnd='/opt/cisco/anyconnect/bin/vpn disconnect'
+
+#########
+# NINJA #
+#########
+alias nds='/usr/local/bin/ninja-dev-sync'
+alias ninja='/usr/local/bin/ninja-dev-sync -setup'
+
+# bastion ProxyCommand override, for Corp hosts
+alias ssho='ssh -o ProxyCommand=none'
 
 # Z
-. /Users/chumich/bin/z.sh
+# . /Users/chumich/bin/z.sh
+source ~/powerlevel10k/powerlevel10k.zsh-theme
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
