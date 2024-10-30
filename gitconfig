@@ -1,34 +1,38 @@
 [user]
-	name = Michael Chu
-	email = chumich@amazon.com
+  name = Michael Chu
+  email = chumich@amazon.com
 [color]
-	ui = auto
+  ui = auto
 [push]
-	default = simple
+  default = simple
 [core]
-	excludesfile = /Users/chumich/.gitignore
-	pager = less -FMRiX
-	autocrlf = input
-	editor = code --wait
+  excludesfile = /Users/chumich/.gitignore
+  pager = less -FMRiX
+  autocrlf = input
+  editor = code --wait
+  hooksPath = /Users/chumich/.git-templates/hooks
 [merge]
-        tool = vscode
+  tool = vscode
 [mergetool "vscode"]
-        cmd = code --wait $MERGED
+  cmd = code --wait $MERGED
 [diff]
-	tool = vscode
+  tool = vscode
 [difftool "vscode"]
-	cmd = code --wait --diff $LOCAL $REMOTE
+  cmd = code --wait --diff $LOCAL $REMOTE
 [alias]
-    co = checkout
-	st = status
-	br = branch
-	dag = log --graph --format='format:%C(yellow)%h%C(reset) %C(blue)\"%an\" <%ae>%C(reset) %C(magenta)%cr%C(reset)%C(auto)%d%C(reset)%n%s' --date-order
-	lg = log --color --graph --pretty=format:'%C(cyan)%h%C(reset) -%C(auto)%d%C(reset) %s %C(green)(%cr) %C(blue)<%an>%C(reset)' --abbrev-commit
+  co = checkout
+  st = status
+  br = branch
+  sw = switch
+  dag = log --graph --format='format:%C(yellow)%h%C(reset) %C(blue)\"%an\" <%ae>%C(reset) %C(magenta)%cr%C(reset)%C(auto)%d%C(reset)%n%s' --date-order
+  lg = log --color --graph --pretty=format:'%C(cyan)%h%C(reset) -%C(auto)%d%C(reset) %s %C(green)(%cr) %C(blue)<%an>%C(reset)' --abbrev-commit
 [amazon]
-	append-cr-url = true
-	pull-request-by-default = true
+  append-cr-url = true
+  pull-request-by-default = true
 [filter "lfs"]
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-	required = true
+  clean = git-lfs clean -- %f
+  smudge = git-lfs smudge -- %f
+  process = git-lfs filter-process
+  required = true
+[branch]
+  autoSetupRebase = always
