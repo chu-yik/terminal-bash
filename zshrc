@@ -1,5 +1,6 @@
-# Q pre block. Keep at the top of this file.
+# Amazon Q pre block. Keep at the top of this file.
 [[ -f "${HOME}/Library/Application Support/amazon-q/shell/zshrc.pre.zsh" ]] && builtin source "${HOME}/Library/Application Support/amazon-q/shell/zshrc.pre.zsh"
+
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -10,9 +11,6 @@ fi
 ########
 # PATH #
 ########
-# export PATH=/Library/Android/sdk/platform-tools:"${PATH}"
-# export PATH=/Library/Developer/Toolchains/swift-latest.xctoolchain/usr/bin:"${PATH}"
-# export PATH=/usr/local/bin:/usr/local/sbin:"${PATH}"
 export PATH=~/bin:"${PATH}"
 # enable gmake as make
 export PATH="/usr/local/opt/make/libexec/gnubin:${PATH}"
@@ -20,6 +18,19 @@ export PATH="/usr/local/opt/make/libexec/gnubin:${PATH}"
 export PATH="${HOME}/.rd/bin:${PATH}"
 # krew
 export PATH="${PATH}:${HOME}/.krew/bin"
+
+##########
+# Amazon #
+##########
+export ACD=chumich.aka.corp.amazon.com
+
+# Amazon BuilderToolbox
+export PATH=$HOME/bin:$HOME/.toolbox/bin:$PATH
+# Homebrew
+eval "$(/opt/homebrew/bin/brew shellenv)"
+# Set up mise for runtime management
+eval "$(mise activate zsh)"
+source /Users/chumich/.brazil_completion/zsh_completion
 
 # GO BIN
 if command -v go 1>/dev/null 2>&1; then
@@ -96,15 +107,7 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-##########
-# Amazon #
-##########
-export ACD=chumich.aka.corp.amazon.com
 
-# Amazon BuilderToolbox
-export PATH=$HOME/bin:$HOME/.toolbox/bin:$PATH
-# python packages
-export PATH=$HOME/Library/Python/2.7/bin:$PATH
 
 # odin
 alias odin="ssh -L 2009:localhost:2009 chumich.aka.corp.amazon.com -f -N"
@@ -149,10 +152,11 @@ alias port-open='lsof -i -P -n | grep LISTEN'
 # K8s #
 #######
 export KUBE_EDITOR="code --wait"
+
 # kubecolor
-# command -v kubecolor >/dev/null 2>&1 && alias kubectl="kubecolor"
-# compdef kubecolor=kubectl # only needed for zsh
-# export KUBECOLOR_OBJ_FRESH=12h # highlight resources newer than 12h
+command -v kubecolor >/dev/null 2>&1 && alias kubectl="kubecolor"
+compdef kubecolor=kubectl # only needed for zsh
+export KUBECOLOR_OBJ_FRESH=12h # highlight resources newer than 12h
 
 # kubectl
 alias k='kubectl'
@@ -348,5 +352,5 @@ export AWS_EC2_METADATA_DISABLED=true
 export PATH="$PATH:/Users/chumich/.hishtory"
 source /Users/chumich/.hishtory/config.zsh
 
-# Q post block. Keep at the bottom of this file.
+# Amazon Q post block. Keep at the bottom of this file.
 [[ -f "${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zsh" ]] && builtin source "${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zsh"
